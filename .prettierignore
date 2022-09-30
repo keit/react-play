@@ -1,0 +1,7 @@
+app/assets/javascripts/**/*.js
+docs/
+tmp/
+vendor/
+coverage/
+app/javascript/frontend/coveragefrontend/coverage
+public/

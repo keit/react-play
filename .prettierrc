@@ -1,0 +1,16 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "jsxSingleQuote": true,
+  "overrides": [
+    {
+      "files": "*.{scss,css}",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}
