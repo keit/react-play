@@ -5,28 +5,41 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 import reportWebVitals from './reportWebVitals'
 import { Home } from './Home'
-import { About } from './About'
-import { Posts } from './Posts'
-import { PostLists } from './PostLists'
+import Navbar from './Navvar'
+import NoMatch from './NoMatch'
+import Products from './Products'
+import { FeaturedProduct } from './FeaturedProduct'
+import { NewProduct } from './NewProduct'
+import Users from './Users'
+import UserDetails from './UserDetails'
+// import About from './About'
+const LazyAbout = React.lazy(() => import('./About'))
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <nav style={{ margin: 10 }}>
-        <Link to='/' style={{ padding: 5 }}>
-          Home
-        </Link>
-        <Link to='/about' style={{ padding: 5 }}>
-          About
-        </Link>
-      </nav>
+      <Navbar />
       <Routes>
+        <Route path='*' element={<NoMatch />} />
         <Route path='/' element={<Home />} />
-        <Route path='about' element={<About />} />
-        <Route path='posts' element={<Posts />}>
-          <Route path='/' element={<PostLists />} />
+        <Route path='products' element={<Products />}>
+          <Route index element={<FeaturedProduct />} />
+          <Route path='featured' element={<FeaturedProduct />} />
+          <Route path='new' element={<NewProduct />} />
         </Route>
+        <Route path='users' element={<Users />}>
+          <Route path=':userId' element={<UserDetails />} />
+        </Route>
+        {/* <Route path='about' element={<About />} /> */}
+        <Route
+          path='about'
+          element={
+            <React.Suspense fallback='Loading...'>
+              <LazyAbout />
+            </React.Suspense>
+          }
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -2,26 +2,34 @@ import React from 'react'
 
 // import { Link } from "react-router-dom";
 import { NavLink } from 'react-router-dom'
-const Navbar: React.FC<any> = () => {
-  const navLinkStyles = (props: {
+
+const navLinkStyles =
+  (additionalProps: React.CSSProperties) =>
+  (props: {
     isActive: boolean
     isPending: boolean
   }): React.CSSProperties | undefined => {
     const { isActive } = props
     return {
       fontWeight: isActive ? 'bold' : 'normal',
-      textDecoration: isActive ? 'none' : 'underline'
+      textDecoration: isActive ? 'none' : 'underline',
+      ...additionalProps
     }
   }
 
+const Navbar: React.FC<any> = () => {
   return (
-    <nav className='primary-nav'>
-      {/* <Link to="/">Home</Link> */}
-      {/* <Link to="/about">About</Link> */}
-      <NavLink style={navLinkStyles} to='/'>
+    <nav className='primary-nav' style={{ margin: 10 }}>
+      <NavLink style={navLinkStyles({ padding: 5 })} to='/'>
         Home
       </NavLink>
-      <NavLink style={navLinkStyles} to='/about'>
+      <NavLink style={navLinkStyles({ padding: 5 })} to='/products'>
+        Products
+      </NavLink>
+      <NavLink style={navLinkStyles({ padding: 5 })} to='/users'>
+        Users
+      </NavLink>
+      <NavLink style={navLinkStyles({ padding: 5 })} to='/about'>
         About
       </NavLink>
     </nav>
