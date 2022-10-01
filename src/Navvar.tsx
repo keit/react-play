@@ -18,7 +18,7 @@ const navLinkStyles =
 
 const Navbar: React.FC<any> = () => {
   return (
-    <nav className='primary-nav' style={{ margin: 10 }}>
+    <nav className='primary-nav max-w-xs' style={{ margin: 10 }}>
       <NavLink style={navLinkStyles({ padding: 5 })} to='/'>
         Home
       </NavLink>

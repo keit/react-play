@@ -20,27 +20,29 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path='*' element={<NoMatch />} />
-        <Route path='/' element={<Home />} />
-        <Route path='products' element={<Products />}>
-          <Route index element={<FeaturedProduct />} />
-          <Route path='featured' element={<FeaturedProduct />} />
-          <Route path='new' element={<NewProduct />} />
-        </Route>
-        <Route path='users' element={<Users />}>
-          <Route path=':userId' element={<UserDetails />} />
-        </Route>
-        {/* <Route path='about' element={<About />} /> */}
-        <Route
-          path='about'
-          element={
-            <React.Suspense fallback='Loading...'>
-              <LazyAbout />
-            </React.Suspense>
-          }
-        />
-      </Routes>
+      <div id='contents'>
+        <Routes>
+          <Route path='*' element={<NoMatch />} />
+          <Route path='/' element={<Home />} />
+          <Route path='products' element={<Products />}>
+            <Route index element={<FeaturedProduct />} />
+            <Route path='featured' element={<FeaturedProduct />} />
+            <Route path='new' element={<NewProduct />} />
+          </Route>
+          <Route path='users' element={<Users />}>
+            <Route path=':userId' element={<UserDetails />} />
+          </Route>
+          {/* <Route path='about' element={<About />} /> */}
+          <Route
+            path='about'
+            element={
+              <React.Suspense fallback='Loading...'>
+                <LazyAbout />
+              </React.Suspense>
+            }
+          />
+        </Routes>
+      </div>
     </BrowserRouter>
   </React.StrictMode>
 )
