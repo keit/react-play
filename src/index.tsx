@@ -19,29 +19,31 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Navbar />
-      <div id='contents'>
-        <Routes>
-          <Route path='*' element={<NoMatch />} />
-          <Route path='/' element={<Home />} />
-          <Route path='products' element={<Products />}>
-            <Route index element={<FeaturedProduct />} />
-            <Route path='featured' element={<FeaturedProduct />} />
-            <Route path='new' element={<NewProduct />} />
-          </Route>
-          <Route path='users' element={<Users />}>
-            <Route path=':userId' element={<UserDetails />} />
-          </Route>
-          {/* <Route path='about' element={<About />} /> */}
-          <Route
-            path='about'
-            element={
-              <React.Suspense fallback='Loading...'>
-                <LazyAbout />
-              </React.Suspense>
-            }
-          />
-        </Routes>
+      <div id='container' className='flex font-sans'>
+        <Navbar className='flex-none w-48 min-h-screen relative bg-slate-300' />
+        <div className='contents w-full'>
+          <Routes>
+            <Route path='*' element={<NoMatch />} />
+            <Route path='/' element={<Home />} />
+            <Route path='products' element={<Products />}>
+              <Route index element={<FeaturedProduct />} />
+              <Route path='featured' element={<FeaturedProduct />} />
+              <Route path='new' element={<NewProduct />} />
+            </Route>
+            <Route path='users' element={<Users />}>
+              <Route path=':userId' element={<UserDetails />} />
+            </Route>
+            {/* <Route path='about' element={<About />} /> */}
+            <Route
+              path='about'
+              element={
+                <React.Suspense fallback='Loading...'>
+                  <LazyAbout />
+                </React.Suspense>
+              }
+            />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   </React.StrictMode>
