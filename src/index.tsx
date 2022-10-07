@@ -19,9 +19,9 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <div id='container' className='flex font-sans'>
-        <Navbar className='flex-none w-48 min-h-screen relative bg-slate-300' />
-        <div className='contents w-full'>
+      <div id='container' className='flex-col font-sans'>
+        <Navbar />
+        <div className='contents'>
           <Routes>
             <Route path='*' element={<NoMatch />} />
             <Route path='/' element={<Home />} />
